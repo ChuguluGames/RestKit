@@ -247,7 +247,7 @@
     // Perform the mapping
     BOOL foundMappable = NO;
     NSMutableDictionary* results = [NSMutableDictionary dictionary];
-    NSDictionary* mappingsByKeyPath = [[self.mappingProvider mappingsByKeyPath] copy];
+    NSDictionary* mappingsByKeyPath = [self.mappingProvider mappingsByKeyPath];
     for (NSString* keyPath in mappingsByKeyPath) {
         id mappingResult;
         id mappableValue;
@@ -289,7 +289,7 @@
             [results setObject:mappingResult forKey:keyPath];
         }
     }
-    [mappingsByKeyPath release];
+    //[mappingsByKeyPath release];
     if ([self.delegate respondsToSelector:@selector(objectMapperDidFinishMapping:)]) {
         [self.delegate objectMapperDidFinishMapping:self];
     }
