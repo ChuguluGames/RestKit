@@ -116,7 +116,7 @@ static const NSTimeInterval kFlushDelay = 0.3;
 		_requests = [[NSMutableArray alloc] init];
 		_suspended = YES;
 		_loadingCount = 0;
-		_concurrentRequestsLimit = 5;
+		_concurrentRequestsLimit = 1;
 		_requestTimeout = 300;
         _showsNetworkActivityIndicatorWhenBusy = NO;
 
