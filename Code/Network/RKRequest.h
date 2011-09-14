@@ -72,6 +72,9 @@ typedef enum RKRequestBackgroundPolicy {
 @class RKResponse, RKRequestQueue;
 @protocol RKRequestDelegate;
 
+/**
+ Models the request portion of an HTTP request/response cycle.
+ */
 @interface RKRequest : NSObject {
 	NSURL* _URL;
 	NSMutableURLRequest* _URLRequest;
@@ -285,9 +288,12 @@ typedef enum RKRequestBackgroundPolicy {
 
 /**
  * Cancels the underlying URL connection.
- * This will send the requestDidCancel: delegate method
- * if your delegate responds to it. It then nils out the delegate
- * to ensure no more messages are sent to it.
+ * This will call the requestDidCancel: delegate method
+ * if your delegate responds to it. This does not subsequently
+ * set the the request's delegate to nil. However, it's good
+ * practice to cancel the RKRequest and immediately set the
+ * delegate property to nil within the delegate's dealloc method.
+ * @see NSURLConnection:cancel
  */
 - (void)cancel;
 
